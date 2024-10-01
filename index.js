@@ -16,9 +16,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const allowedOrigins = [
-  "https://add-products-front-gcsaw4pqw-yash-patels-projects-aa22850f.vercel.app",
-]; // Add your frontend URL here
+const allowedOrigins = ["https://add-products-front-end.vercel.app"]; // Add your frontend URL here
 app.use(
   cors({
     origin: allowedOrigins,
