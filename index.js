@@ -1,6 +1,7 @@
 import express from "express";
 // import dotenv from "dotenv";
 // import cookieParser from "cookie-parser";
+import cors from "cors"; // Import CORS middleware
 import Product from "./models/Product.js";
 
 import connectDB from "./config/db.js";
@@ -14,6 +15,17 @@ const app = express();
 //Body parser middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+const allowedOrigins = [
+  "https://add-products-front-gcsaw4pqw-yash-patels-projects-aa22850f.vercel.app",
+]; // Add your frontend URL here
+app.use(
+  cors({
+    origin: allowedOrigins,
+    methods: ["GET", "POST"], // Specify the allowed methods
+    credentials: true, // If you need to include credentials (like cookies)
+  })
+);
 
 app.get("/", (req, res) => {
   res.send("Welcome to buyit");
